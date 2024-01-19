@@ -4,7 +4,13 @@ local function my_on_attach(bufnr)
     local api = require("nvim-tree.api")
 
     local function opts(desc)
-        return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+        return {
+            desc = "nvim-tree: " .. desc,
+            buffer = bufnr,
+            noremap = true,
+            silent = true,
+            nowait = true
+        }
     end
 
     -- default mappings
@@ -47,9 +53,12 @@ return {
         desc = "Open nvim_tree when neovim is opened with a directory.",
     })
 
-    local keymap = vim.keymap
-
     -- toggle nvim-tree window
-    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "nvim-tree: Toggle nvim tree window" })
+    vim.keymap.set(
+        "n",
+        "<leader>ep",
+        "<cmd>NvimTreeToggle<CR>",
+        { desc = "nvim-tree: Toggle nvim tree window" }
+    )
   end,
 }

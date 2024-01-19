@@ -1,6 +1,34 @@
--- move selected lines up/down, adjusting indent as necessary
 -- '>+1, :h range, navigate to section 10.3, move down to "USING MARKS" and
 --     "VISUAL MODE AND RANGES"
 -- =, :h v_=, adjusts the indent
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {
+    desc = "Move selected lines down, adjusting indent as necessary"
+})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {
+    desc = "Move selected lines up, adjusting indent as necessary"
+})
+
+vim.keymap.set("n", "J", "mzJ`z", {
+    desc = "Join next line with current, retaining cursor position"
+})
+vim.keymap.set("n", "<C-d>", "<C-d>zz", {
+    desc = "Scroll window down in buffer, redrawing current line \z
+            in center of window"
+})
+vim.keymap.set("n", "<C-u>", "<C-u>zz", {
+    desc = "Scroll window up in buffer, redrawing current line \z
+            in center of window"
+})
+vim.keymap.set("n", "n", "nzzzv", {
+    desc = "Repeat last pattern search, redrawing current line \z
+            in center of window, unfolding to view line if necessary"
+})
+vim.keymap.set("n", "N", "Nzzzv", {
+    desc = "Repeat last reverse pattern search, redrawing current line \z
+            in center of window, unfolding to view line if necessary"
+})
+
+vim.keymap.set("x", "<leader>p", [["_dP]], {
+    desc = "Deletes the selected text, not ovewriting the last yanked text, \z
+            then pastes the last yanked text in its place."
+})
