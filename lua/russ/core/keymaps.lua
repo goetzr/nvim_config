@@ -46,6 +46,12 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], {
     desc = "Deletes the selected text, not overwriting the last yanked text."
 })
 
-vim.keymap.set("n", "<C-f>", "<cmd>silent! tmux neww tmux-sessionizer<CR>", {
+-- the '!' is the ':!' ex command, which executes tmux in the shell
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", {
     desc = ""
+})
+
+vim.keymap.set("n", "<leader>s",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
+        desc = ""
 })
