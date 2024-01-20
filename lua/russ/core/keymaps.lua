@@ -32,3 +32,20 @@ vim.keymap.set("x", "<leader>p", [["_dP]], {
     desc = "Deletes the selected text, not ovewriting the last yanked text, \z
             then pastes the last yanked text in its place."
 })
+
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {
+    desc = "Yank text into the system clipboard so the yanked text can be \z
+            pasted into another application."
+})
+vim.keymap.set("n", "<leader>Y", [["+Y]], {
+    desc = "Yank lines into the system clipboard so the yanked lines can be \z
+            pasted into another application."
+})
+
+vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], {
+    desc = "Deletes the selected text, not overwriting the last yanked text."
+})
+
+vim.keymap.set("n", "<C-f>", "<cmd>silent! tmux neww tmux-sessionizer<CR>", {
+    desc = ""
+})
