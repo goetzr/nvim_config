@@ -54,10 +54,7 @@ return {
     })
 
     -- toggle nvim-tree window
-    vim.keymap.set(
-        "n",
-        "<leader>ep",
-        "<cmd>NvimTreeToggle<CR>",
+    vim.keymap.set( "n", "<leader>ex", "<cmd>NvimTreeToggle<CR>",
         { desc = "nvim-tree: Toggle nvim tree window" }
     )
   end,

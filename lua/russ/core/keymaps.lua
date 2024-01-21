@@ -58,5 +58,13 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", {
 -- NOTE: <CR> is not specified, so the substitution is not executed
 vim.keymap.set("n", "<leader>s",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
-        desc = "Prepares a global substitution of the word under the cursor"
+        desc = "Prepares a global substitution of the word under the cursor."
+})
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", {
+    silent = true,
+    desc = "Makes the current file executable."
+})
+
+vim.keymap.set("i", "<C-o>", "<Esc>O", {
+    desc = "Insert blank line above the current line."
 })
