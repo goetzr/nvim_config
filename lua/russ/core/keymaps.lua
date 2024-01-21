@@ -51,7 +51,12 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", {
     desc = ""
 })
 
+-- in a pattern "\<" matches the beginning of a word (:h /ordinary-atom, :h /\<)
+-- in a pattern "\>" matches the end of a word (:h /ordinary-atom, :h /\>)
+-- in command mode, <C-r><C-w> inserts the word under the cursor (:h c_<C-R>_<C-W>)
+-- in command mode, <Left> moves the cursor to the left one (:h c_<Left>)
+-- NOTE: <CR> is not specified, so the substitution is not executed
 vim.keymap.set("n", "<leader>s",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
-        desc = ""
+        desc = "Prepares a global substitution of the word under the cursor"
 })
