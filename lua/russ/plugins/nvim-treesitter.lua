@@ -7,6 +7,7 @@ return {
         configs.setup({
             ensure_installed = { "c", "cpp", "bash", "cmake", "lua", "make", "query", "rust", "toml", "vim", "vimdoc" },
             sync_install = false,
+            auto_install = false,
             highlight = { enable = true },
             indent = { enable = true },
         })
