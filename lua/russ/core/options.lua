@@ -30,9 +30,6 @@ vim.o.updatetime = 50
 
 vim.o.colorcolumn = "80"
 
--- disable netrw as suggested by vim-tree plugin
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- enable termguicolors as suggested by vim-tree plugin
 vim.o.termguicolors = true
+
+vim.g.netrw_banner = 0

@@ -1,8 +1,6 @@
 {
-  "catppuccin": { "branch": "main", "commit": "5e36ca599f4aa41bdd87fbf2c5aae4397ac55074" },
-  "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
-  "nvim-tree.lua": { "branch": "master", "commit": "f1b3e6a7eb92da492bd693257367d9256839ed3d" },
-  "nvim-treesitter": { "branch": "master", "commit": "94bd4bcc5bbce8334303727627b628ece72e798d" },
-  "nvim-treesitter-textobjects": { "branch": "master", "commit": "19a91a38b02c1c28c14e0ba468d20ae1423c39b2" },
-  "nvim-web-devicons": { "branch": "master", "commit": "db0c864375c198cacc171ff373e76bfce2a85045" }
+  "catppuccin": { "branch": "main", "commit": "afab7ec2a79c7127627dede79c0018b6e45663d0" },
+  "lazy.nvim": { "branch": "main", "commit": "aedcd79811d491b60d0a6577a9c1701063c2a609" },
+  "nvim-treesitter": { "branch": "master", "commit": "d4dac523d2546afc266eb9b5a7986690b5319c41" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "19a91a38b02c1c28c14e0ba468d20ae1423c39b2" }
 }

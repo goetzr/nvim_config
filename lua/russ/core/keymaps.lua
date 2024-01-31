@@ -11,6 +11,7 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {
 vim.keymap.set("n", "J", "mzJ`z", {
     desc = "Join next line with current, retaining cursor position"
 })
+
 vim.keymap.set("n", "<C-d>", "<C-d>zz", {
     desc = "Scroll window down in buffer, redrawing current line \z
             in center of window"
@@ -32,11 +33,10 @@ vim.keymap.set("x", "<leader>p", [["_dP]], {
     desc = "Deletes the selected text, not ovewriting the last yanked text, \z
             then pastes the last yanked text in its place."
 })
+
 vim.keymap.set("i", "<C-v>", [[<Esc>"+p`]A]], {
     desc = "Pastes the text in the system clipboard at the cursor location."
 })
-
-
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {
     desc = "Yank text into the system clipboard so the yanked text can be \z
             pasted into another application."
@@ -64,11 +64,15 @@ vim.keymap.set("n", "<leader>s",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
         desc = "Prepares a global substitution of the word under the cursor."
 })
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", {
-    silent = true,
-    desc = "Makes the current file executable."
-})
 
 vim.keymap.set("i", "<C-o>", "<Esc>O", {
-    desc = "Insert blank line above the current line."
+    desc = "Insert blank line above the current line, remaining in insert mode."
+})
+
+vim.keymap.set("i", "<C-m>", "<Esc>", {
+    desc = "Faster way to exit insert mode."
+})
+
+vim.keymap.set("n", "<leader>pv", "<cmd>:Ex<CR>", {
+    desc = "Show the file explorer."
 })
