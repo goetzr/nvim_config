@@ -11,7 +11,16 @@ return {
     config = function()
         t = require("telescope")
 
-        t.setup()
+        t.setup({
+            defaults = {
+                mappings = {
+                    i = {
+                        --["<C-j>"] = "<Esc>",
+                    },
+                },
+            },
+        })
+
         t.load_extension("fzf")
 
         b = require("telescope.builtin")
