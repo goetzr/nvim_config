@@ -10,12 +10,16 @@ return {
     },
     config = function()
         t = require("telescope")
+        actions = require("telescope.actions")
 
         t.setup({
             defaults = {
                 mappings = {
                     i = {
-                        --["<C-j>"] = "<Esc>",
+                        ["<C-j>"] = { "<Esc>", type = "command" },
+                    },
+                    n = {
+                        ["<C-j>"] = actions.close,
                     },
                 },
             },
