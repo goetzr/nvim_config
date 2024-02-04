@@ -9,10 +9,10 @@ return {
         },
     },
     config = function()
-        t = require("telescope")
-        actions = require("telescope.actions")
+        local telescope = require("telescope")
+        local actions = require("telescope.actions")
 
-        t.setup({
+        telescope.setup({
             defaults = {
                 mappings = {
                     i = {
@@ -25,19 +25,19 @@ return {
             },
         })
 
-        t.load_extension("fzf")
+        telescope.load_extension("fzf")
 
-        b = require("telescope.builtin")
-        vim.keymap.set("n", "<leader>ff", b.find_files, {
+        local builtin = require("telescope.builtin")
+        vim.keymap.set("n", "<leader>ff", builtin.find_files, {
             desc = "nvim-telescope: find files"
         })
-        vim.keymap.set("n", "<leader>fg", b.live_grep, {
+        vim.keymap.set("n", "<leader>fg", builtin.live_grep, {
             desc = "nvim-telescope: live grep"
         })
-        vim.keymap.set("n", "<leader>fb", b.buffers, {
+        vim.keymap.set("n", "<leader>fb", builtin.buffers, {
             desc = "nvim-telescope: buffers"
         })
-        vim.keymap.set("n", "<leader>fh", b.help_tags, {
+        vim.keymap.set("n", "<leader>fh", builtin.help_tags, {
             desc = "nvim-telescope: help tags"
         })
     end

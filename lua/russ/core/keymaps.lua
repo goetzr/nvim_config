@@ -72,3 +72,7 @@ vim.keymap.set("i", "<C-o>", "<Esc>O", {
 vim.keymap.set("i", "<C-j>", "<Esc>", {
     desc = "Faster way to exit insert mode."
 })
+
+vim.keymap.set("n", "p", "p`]", {
+    desc = "Make paste move to the end of the pasted text automatically."
+})
