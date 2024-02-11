@@ -3,7 +3,7 @@ local lsp_on_attach = function(_client, bufnr)
         if desc then
             desc = "LSP: " .. desc
         end
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+        vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
     end
 
     nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
@@ -31,9 +31,12 @@ local lsp_on_attach = function(_client, bufnr)
     end, "[W]orkspace [L]ist Folders")
 
     -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-        vim.lsp.buf.format()
-    end, { desc = "Format current buffer with LSP" })
+    -- vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+    --     vim.lsp.buf.format()
+    -- end, { desc = "Format current buffer with LSP" })
+    nmap("<leader>fc", function()
+        vim.lsp.buf.format { async = true }
+    end, "[F]ormat [C]ode")
 end
 
 local lsp_servers = {
@@ -64,8 +67,8 @@ local mason_lspconfig = {
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "williamboman/mason.nvim",
+        { "williamboman/mason.nvim", config = true },
         mason_lspconfig,
-        "folke/neodev.nvim",
+        { "folke/neodev.nvim", config = true },
     },
 }
