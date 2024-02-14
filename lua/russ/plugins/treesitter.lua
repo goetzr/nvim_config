@@ -5,19 +5,19 @@ return {
     },
     build = ":TSUpdate",
     config = function()
-        textobjects = {}
+        --textobjects = {}
 
-        textobjects.select = {
-            enable = true,
-            keymaps = {
-                ["aa"] = "@parameter.outer",
-                ["ia"] = "@parameter.inner",
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-            },
-        }
+        --textobjects.select = {
+        --    enable = true,
+        --    keymaps = {
+        --        ["aa"] = "@parameter.outer",
+        --        ["ia"] = "@parameter.inner",
+        --        ["af"] = "@function.outer",
+        --        ["if"] = "@function.inner",
+        --        ["ac"] = "@class.outer",
+        --        ["ic"] = "@class.inner",
+        --    },
+        --}
 
         --textobjects.move = {
         --    enable = true,
@@ -64,7 +64,7 @@ return {
                 --        node_decremental = "<M-space>",
                 --    },                
                 --},
-                textobjects = textobjects,
+                --textobjects = textobjects,
             })
         end, 0)
     end
