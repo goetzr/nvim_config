@@ -69,7 +69,7 @@ vim.keymap.set("i", "<C-o>", "<Esc>O", {
     desc = "Insert blank line above the current line, remaining in insert mode."
 })
 
-vim.keymap.set("i", "jk", "<Esc>", {
+vim.keymap.set("i", "kj", "<Esc>", {
     desc = "Faster way to exit insert mode."
 })
 

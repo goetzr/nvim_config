@@ -21,7 +21,6 @@ return {
 
         --textobjects.move = {
         --    enable = true,
-        --    set_jumps = true,
         --    goto_next_start = {
         --      ["]m"] = "@function.outer",
         --      ["]]"] = "@class.outer",
@@ -49,23 +48,67 @@ return {
         --        ["<leader>A"] = "@parameter.inner",
         --    },
         --}
+        
+        require("nvim-treesitter").setup()
 
-        vim.defer_fn(function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = { "c", "cpp", "bash", "cmake", "lua", "make", "query", "rust", "toml", "vim", "vimdoc" },
-                highlight = { enable = true },
-                indent = { enable = true },
-                --incremental_selection = {
-                --    enable = true,
-                --    keymaps = {
-                --        init_selection = "<c-space>",
-                --        node_incremental = "<c-space>",
-                --        scope_incremental = "<c-s>",
-                --        node_decremental = "<M-space>",
-                --    },                
-                --},
-                --textobjects = textobjects,
-            })
-        end, 0)
+        require("nvim-treesitter.configs").setup({
+            ensure_installed = { "c", "cpp", "bash", "cmake", "java", "lua", "make", "query", "rust", "toml", "vim", "vimdoc" },
+            -- builtin modules
+            highlight = { enable = true },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    init_selection = "<leader>si",
+                    node_incremental = "<leader>si",
+                    node_decremental = "<leader>sd",
+                    scope_incremental = "<leader>ss",
+                },                
+            },
+            indent = { enable = true },
+            textobjects = textobjects,
+        })
     end
+}
+
+local textobjects = {}
+
+textobjects.select = {
+    enable = true,
+    keymaps = {
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+    },
+}
+
+textobjects.move = {
+    enable = true,
+    -- 't/T' => "type"
+    goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]t"] = "@class.outer",
+    },
+    goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]T"] = "@class.outer",
+    },
+    goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[t"] = "@class.outer",
+    },
+    goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[T"] = "@class.outer",
+    },
+}
+
+textobjects.swap = {
+    enable = true,
+}
+
+textobjects.lsp_interop = {
+    enable = true,
 }
