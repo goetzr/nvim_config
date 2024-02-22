@@ -1,3 +1,52 @@
+local textobjects = {}
+
+textobjects.select = {
+    enable = true,
+    keymaps = {
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+    },
+}
+
+textobjects.move = {
+    enable = true,
+    -- 't/T' => "type"
+    goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]t"] = "@class.outer",
+    },
+    goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]T"] = "@class.outer",
+    },
+    goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[t"] = "@class.outer",
+    },
+    goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[T"] = "@class.outer",
+    },
+}
+
+textobjects.swap = {
+    enable = true,
+    swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+    },
+    swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
+    },
+}
+
+textobjects.lsp_interop = {
+    enable = true,
+}
+
 return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
@@ -68,47 +117,4 @@ return {
             textobjects = textobjects,
         })
     end
-}
-
-local textobjects = {}
-
-textobjects.select = {
-    enable = true,
-    keymaps = {
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-    },
-}
-
-textobjects.move = {
-    enable = true,
-    -- 't/T' => "type"
-    goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]t"] = "@class.outer",
-    },
-    goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]T"] = "@class.outer",
-    },
-    goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[t"] = "@class.outer",
-    },
-    goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[T"] = "@class.outer",
-    },
-}
-
-textobjects.swap = {
-    enable = true,
-}
-
-textobjects.lsp_interop = {
-    enable = true,
 }
