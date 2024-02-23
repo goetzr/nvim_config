@@ -14,37 +14,46 @@ textobjects.select = {
 
 textobjects.move = {
     enable = true,
-    -- 't/T' => "type"
+    -- 't/T' => "[T]ype"
+    -- 'a/A' => "P[a]rameter"
     goto_next_start = {
         ["]m"] = "@function.outer",
         ["]t"] = "@class.outer",
+        ["]a"] = "@parameter.outer",
     },
     goto_next_end = {
         ["]M"] = "@function.outer",
         ["]T"] = "@class.outer",
+        ["]A"] = "@parameter.outer",
     },
     goto_previous_start = {
         ["[m"] = "@function.outer",
         ["[t"] = "@class.outer",
+        ["[a"] = "@parameter.outer",
     },
     goto_previous_end = {
         ["[M"] = "@function.outer",
         ["[T"] = "@class.outer",
+        ["[A"] = "@parameter.outer",
     },
 }
 
 textobjects.swap = {
-    enable = true,
+    enable = false,
     swap_next = {
-        ["<leader>a"] = "@parameter.inner",
+        ["<leader>wn"] = "@parameter.inner",
     },
     swap_previous = {
-        ["<leader>A"] = "@parameter.inner",
+        ["<leader>wp"] = "@parameter.inner",
     },
 }
 
 textobjects.lsp_interop = {
     enable = true,
+    peek_definition_code = {
+        ["<leader>df"] = "@function.outer",
+        ["<leader>dt"] = "@class.outer",
+    },
 }
 
 return {
@@ -54,50 +63,6 @@ return {
     },
     build = ":TSUpdate",
     config = function()
-        --textobjects = {}
-
-        --textobjects.select = {
-        --    enable = true,
-        --    keymaps = {
-        --        ["aa"] = "@parameter.outer",
-        --        ["ia"] = "@parameter.inner",
-        --        ["af"] = "@function.outer",
-        --        ["if"] = "@function.inner",
-        --        ["ac"] = "@class.outer",
-        --        ["ic"] = "@class.inner",
-        --    },
-        --}
-
-        --textobjects.move = {
-        --    enable = true,
-        --    goto_next_start = {
-        --      ["]m"] = "@function.outer",
-        --      ["]]"] = "@class.outer",
-        --    },
-        --    goto_next_end = {
-        --      ["]M"] = "@function.outer",
-        --      ["]["] = "@class.outer",
-        --    },
-        --    goto_previous_start = {
-        --      ["[m"] = "@function.outer",
-        --      ["[["] = "@class.outer",
-        --    },
-        --    goto_previous_end = {
-        --      ["[M"] = "@function.outer",
-        --      ["[]"] = "@class.outer",
-        --    },
-        --}
-
-        --textobjects.swap = {
-        --    enable = true,
-        --    swap_next = {
-        --        ["<leader>a"] = "@parameter.inner",
-        --    },
-        --    swap_previous = {
-        --        ["<leader>A"] = "@parameter.inner",
-        --    },
-        --}
-        
         require("nvim-treesitter").setup()
 
         require("nvim-treesitter.configs").setup({
