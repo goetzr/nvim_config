@@ -41,6 +41,7 @@ end
 
 local lsp_servers = {
     rust_analyzer = {},
+    lua_ls = {},
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
