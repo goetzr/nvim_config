@@ -41,18 +41,24 @@ end
 
 local lsp_servers = {
     rust_analyzer = {},
-    lua_ls = {},
+    lua_ls = {
+        diagnostics = {
+            globals = { "vim" },
+        }
+    },
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local mason_lspconfig = {
     "williamboman/mason-lspconfig.nvim",
-    opts = {
-        ensure_installed = vim.tbl_keys(lsp_servers),
-    },
-    config = function()
-        require("mason-lspconfig").setup_handlers {
+    config = function(self, opts)
+        local mason_lspconfig = require("mason-lspconfig")
+
+        mason_lspconfig.setup({
+            ensure_installed = vim.tbl_keys(lsp_servers),
+        })
+        mason_lspconfig.setup_handlers {
             function(server_name)
                 require("lspconfig")[server_name].setup({
                     capabilities = capabilities,
