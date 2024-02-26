@@ -1,3 +1,33 @@
+--local setup_lua_ls = function()
+--    local lua_ls_config = require("nvim-lspconfig")["lua_ls"]
+--    local path = client.workspace_folders[1].name
+--    if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+--        client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
+--            Lua = {
+--                runtime = {
+--                    -- Tell the language server which version of Lua you're using
+--                    -- (most likely LuaJIT in the case of Neovim)
+--                    version = 'LuaJIT'
+--                },
+--                -- Make the server aware of Neovim runtime files
+--                workspace = {
+--                    checkThirdParty = false,
+--                    library = {
+--                        vim.env.VIMRUNTIME
+--                        -- Depending on the usage, you might want to add additional paths here.
+--                        -- E.g.: For using `vim.*` functions, add vim.env.VIMRUNTIME/lua.
+--                        -- "${3rd}/luv/library"
+--                        -- "${3rd}/busted/library",
+--                    }
+--                    -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+--                    -- library = vim.api.nvim_get_runtime_file("", true)
+--                }
+--            }
+--        })
+--    end
+--    return true
+--end
+
 local lsp_on_attach = function(_client, bufnr)
     local nmap = function(keys, func, desc)
         if desc then
@@ -41,18 +71,14 @@ end
 
 local lsp_servers = {
     rust_analyzer = {},
-    lua_ls = {
-        diagnostics = {
-            globals = { "vim" },
-        }
-    },
+    lua_ls = {},
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local mason_lspconfig = {
     "williamboman/mason-lspconfig.nvim",
-    config = function(self, opts)
+    config = function()
         local mason_lspconfig = require("mason-lspconfig")
 
         mason_lspconfig.setup({
@@ -68,6 +94,8 @@ local mason_lspconfig = {
                 })
             end,
         }
+
+
     end,
 }
 
