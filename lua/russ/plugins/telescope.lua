@@ -10,21 +10,7 @@ return {
     },
     config = function()
         local telescope = require("telescope")
-        local actions = require("telescope.actions")
-
-        telescope.setup({
-            defaults = {
-                mappings = {
-                    i = {
-                        ["<C-j>"] = { "<Esc>", type = "command" },
-                    },
-                    n = {
-                        ["<C-j>"] = actions.close,
-                    },
-                },
-            },
-        })
-
+        telescope.setup()
         telescope.load_extension("fzf")
 
         local builtin = require("telescope.builtin")
