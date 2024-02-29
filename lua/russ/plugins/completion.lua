@@ -20,7 +20,7 @@ local nvim_cmp = { "hrsh7th/nvim-cmp" }
 
 nvim_cmp.dependencies = {
         -- LSP completion source
-        --{ "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-nvim-lsp" },
         -- Buffer words completion source
         { "hrsh7th/cmp-buffer" },
         -- Filesystem paths completion source

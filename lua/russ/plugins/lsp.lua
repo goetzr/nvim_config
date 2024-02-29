@@ -1,7 +1,7 @@
 local lsp_on_attach_setup = {
     lua_ls = function(client)
         local path = client.workspace_folders[1].name
-        if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
+        if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
             client.config.settings = vim.tbl_deep_extend('force', client.config.settings, {
                 Lua = {
                     runtime = {
@@ -84,6 +84,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local mason_lspconfig = {
     "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+        "cmp_nvim_lsp",
+    },
     config = function()
         local mason_lspconfig = require("mason-lspconfig")
 
@@ -93,15 +96,15 @@ local mason_lspconfig = {
         mason_lspconfig.setup_handlers {
             function(server_name)
                 require("lspconfig")[server_name].setup({
-                    capabilities = capabilities,
+                    capabilities = vim.tbl_deep_extend("force", capabilities,
+                        require("cmp_nvim_lsp").default_capabilities(),
+                        lsp_servers[server_name].capabilities or {}),
                     on_attach = lsp_on_attach,
                     settings = lsp_servers[server_name],
                     filetypes = (lsp_servers[server_name] or {}).filetypes,
                 })
             end,
         }
-
-
     end,
 }
 
@@ -110,6 +113,6 @@ return {
     dependencies = {
         { "williamboman/mason.nvim", config = true },
         mason_lspconfig,
-        { "folke/neodev.nvim", config = true },
+        { "folke/neodev.nvim",       config = true },
     },
 }
