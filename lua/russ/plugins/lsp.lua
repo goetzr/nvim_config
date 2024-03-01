@@ -85,7 +85,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 local mason_lspconfig = {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
-        "cmp_nvim_lsp",
+        "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
         local mason_lspconfig = require("mason-lspconfig")
