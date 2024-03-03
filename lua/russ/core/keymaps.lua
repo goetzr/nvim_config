@@ -88,3 +88,7 @@ vim.keymap.set("n", "<leader>bg",
         desc = "Toggle the background color between light and dark."
     }
 )
+
+vim.keymap.set("t", "kj", "<C-\\><C-n>", {
+    desc = "Return to normal mode."
+})
