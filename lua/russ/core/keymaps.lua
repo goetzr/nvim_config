@@ -37,7 +37,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]], {
 vim.keymap.set("i", "<C-v>", [[<Esc>"+p`]A]], {
     desc = "Pastes the text in the system clipboard at the cursor location."
 })
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], {
     desc = "Yank text into the system clipboard so the yanked text can be \z
             pasted into another application."
 })
@@ -46,7 +46,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], {
             pasted into another application."
 })
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]], {
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], {
     desc = "Deletes the selected text, not overwriting the last yanked text."
 })
 
@@ -63,7 +63,7 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", {
 vim.keymap.set("n", "<leader>s",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {
         desc = "Prepares a global substitution of the word under the cursor."
-})
+    })
 
 vim.keymap.set("i", "<C-o>", "<Esc>O", {
     desc = "Insert blank line above the current line, remaining in insert mode."
@@ -76,3 +76,15 @@ vim.keymap.set("i", "kj", "<Esc>", {
 vim.keymap.set("n", "p", "p`]", {
     desc = "Make paste move to the end of the pasted text automatically."
 })
+
+vim.keymap.set("n", "<leader>bg",
+    function()
+        if vim.o.bg == "dark" then
+            vim.o.bg = "light"
+        else
+            vim.o.bg = "dark"
+        end
+    end, {
+        desc = "Toggle the background color between light and dark."
+    }
+)
