@@ -4,7 +4,7 @@ return {
         -- LSP completion source
         { "hrsh7th/cmp-nvim-lsp" },
         -- Buffer words completion source
-        { "hrsh7th/cmp-buffer" },
+        --{ "hrsh7th/cmp-buffer" },
         -- Filesystem paths completion source
         --{ "hrsh7th/cmp-path" },
         -- Vim command-line completion source
