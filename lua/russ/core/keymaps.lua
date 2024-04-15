@@ -1,5 +1,5 @@
 local map = function(mode, keys, func, desc)
-    require("russ.core.util").map("core", mode, keys, func, desc)
+    require("russ.core.util").map("keymaps", mode, keys, func, desc)
 end
 
 -- '>+1, :h range, navigate to section 10.3, move down to "USING MARKS" and
@@ -17,6 +17,8 @@ map("n", "N", "Nzzzv", "Repeat last reverse pattern search, redrawing current li
 
 map("x", "<leader>p", [["_dP]], "Deletes the selected text, not ovewriting the last yanked text, then pastes the last yanked text in its place")
 
+-- TODO: Trying using autocmds and setreg:
+-- https://www.reddit.com/r/neovim/comments/13zrqcs/how_do_you_copypaste_stuff_fromto_vim/
 map("i", "<C-v>", [[<Esc>"+p`]A]], "Pastes the text in the system clipboard at the cursor location")
 map({ "n", "v" }, "<leader>y", [["+y]], "Yank text into the system clipboard so the yanked text can be pasted into another application")
 map("n", "<leader>Y", [["+Y]], "Yank lines into the system clipboard so the yanked lines can be pasted into another application")
@@ -34,7 +36,6 @@ map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", "tmux new tmux_
 map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Prepares a global substitution of the word under the cursor")
 
 map("i", "kj", "<Esc>", "Faster way to exit insert mode")
-map("t", "kj", "<C-\\><C-n>", "Return to normal mode")
 
 map("n", "p", "p`]", "Make paste move to the end of the pasted text automatically")
 
