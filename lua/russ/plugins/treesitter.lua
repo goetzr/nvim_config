@@ -1,7 +1,7 @@
 local textobjects = {}
 
 textobjects.select = {
-    enable = true,
+    enable = false,
     keymaps = {
         ["aa"] = "@parameter.outer",
         ["ia"] = "@parameter.inner",
@@ -13,7 +13,7 @@ textobjects.select = {
 }
 
 textobjects.move = {
-    enable = true,
+    enable = false,
     -- 't/T' => "[T]ype"
     -- 'a/A' => "P[a]rameter"
     goto_next_start = {
@@ -49,7 +49,7 @@ textobjects.swap = {
 }
 
 textobjects.lsp_interop = {
-    enable = true,
+    enable = false,
     peek_definition_code = {
         ["<leader>df"] = "@function.outer",
         ["<leader>dt"] = "@class.outer",

@@ -15,18 +15,24 @@ map("n", "<C-u>", "<C-u>zz", "Scroll window up in buffer, redrawing current line
 map("n", "n", "nzzzv", "Repeat last pattern search, redrawing current line in center of window, unfolding to view line if necessary")
 map("n", "N", "Nzzzv", "Repeat last reverse pattern search, redrawing current line in center of window, unfolding to view line if necessary")
 
+-- **********************************************************************
+--                              Copy/paste
+-- **********************************************************************
+map("n", "p", "p`]", "Make paste move to the end of the pasted text automatically")
 map("x", "<leader>p", [["_dP]], "Deletes the selected text, not ovewriting the last yanked text, then pastes the last yanked text in its place")
-
--- TODO: Trying using autocmds and setreg:
--- https://www.reddit.com/r/neovim/comments/13zrqcs/how_do_you_copypaste_stuff_fromto_vim/
-map("i", "<C-v>", [[<Esc>"+p`]A]], "Pastes the text in the system clipboard at the cursor location")
-map({ "n", "v" }, "<leader>y", [["+y]], "Yank text into the system clipboard so the yanked text can be pasted into another application")
-map("n", "<leader>Y", [["+Y]], "Yank lines into the system clipboard so the yanked lines can be pasted into another application")
-
 map({ "n", "v" }, "<leader>d", [["_d]], "Deletes the selected text, not overwriting the last yanked text")
-
--- the '!' is the ':!' ex command, which executes tmux in the shell
-map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", "tmux new tmux_sessionizer")
+-- Added an autocmd for FocusLost in init.lua for copying from neovim to the system clipboard.
+-- Keymap explanation:
+--      .     => After adding a newline, you need to type at least one character to retain the indentation.
+--               Immediately exiting insert mode removes the indent and places the cursor at the start of the line.
+--               I want to retain the indentation; the '.' acts as a dummy character to do this.
+--      <Esc> => Exit insert mode.   
+--      my    => Set the 'y' mark on the dummy '.' character so we can get back to it later.
+--      "+p   => Paste the text from the system clipboard after the dummy '.' character.
+--      mz    => Set the 'z' mark on the last character of the text pasted from the system clipboard.
+--      `yx   => Jump back to the dummy '.' character and delete it.
+--      `za   => Jump to the last character of the pasted text and re-enter insert mode after this character.
+map("i", "<C-v>", [[.<Esc>my"+pmz`yx`za]], "Pastes the text in the system clipboard at the cursor location")
 
 -- in a pattern "\<" matches the beginning of a word (:h /ordinary-atom, :h /\<)
 -- in a pattern "\>" matches the end of a word (:h /ordinary-atom, :h /\>)
@@ -37,18 +43,5 @@ map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "P
 
 map("i", "kj", "<Esc>", "Faster way to exit insert mode")
 
-map("n", "p", "p`]", "Make paste move to the end of the pasted text automatically")
-
-map("n", "<leader>bg",
-    function()
-        if vim.o.bg == "dark" then
-            vim.o.bg = "light"
-        else
-            vim.o.bg = "dark"
-        end
-    end,
-    "Toggle the background color between light and dark"
-)
-
-map("n", "<leader>dj", vim.diagnostic.get_next, "Goto next diagnostic")
-map("n", "<leader>dk", vim.diagnostic.get_prev, "Goto prev diagnostic")
+map("n", "<leader>dj", vim.diagnostic.goto_next, "Goto next diagnostic")
+map("n", "<leader>dk", vim.diagnostic.goto_prev, "Goto prev diagnostic")
