@@ -23,6 +23,9 @@ vim.opt.undofile = true
 vim.o.hlsearch = false
 vim.o.incsearch = true
 
+vim.o.splitright = true
+vim.o.splitbelow = true
+
 vim.o.scrolloff = 8
 vim.o.signcolumn = "yes"
 
