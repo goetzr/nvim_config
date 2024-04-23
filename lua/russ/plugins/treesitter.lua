@@ -70,7 +70,7 @@ return {
             -- builtin modules
             highlight = { enable = true },
             incremental_selection = {
-                enable = true,
+                enable = false,
                 keymaps = {
                     init_selection = "<leader>si",
                     node_incremental = "<leader>si",

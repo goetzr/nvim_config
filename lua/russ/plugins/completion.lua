@@ -42,10 +42,10 @@ return {
                     select = true,
                 }),
                 ["<C-e>"] = cmp.mapping.abort(),
+                ["<C-Space>"] = cmp.mapping.complete(),
 
                 -- Lesser used.
                 ["<C-o>"] = cmp.mapping.open_docs(),
-                ["<C-Space>"] = cmp.mapping.complete(),
 
                 -- Luasnip
                 --["<Tab>"] = cmp.mapping(function(fallback)
