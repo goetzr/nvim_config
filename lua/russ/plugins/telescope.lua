@@ -21,8 +21,8 @@ return {
         local builtin = require("telescope.builtin")
         map("n", "<leader>ff", builtin.find_files, "[F]ind [F]iles")
         map("n", "<leader>fb", builtin.buffers, "[F]ind [B]uffers")
-        map("n", "<leader>fh", builtin.help_tags, "[F]ind [H]elp tags")
         -- NOTE: Hitting ctrl-q in this window adds the diagnostics to the quickfix window
         map("n", "<leader>dl", builtin.diagnostics, "[D]iagnostics [L]ist")
+        map("n", "<leader>fh", builtin.help_tags, "[F]ind [H]elp tags")
     end
 }
